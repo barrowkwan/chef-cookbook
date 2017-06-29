@@ -30,6 +30,7 @@ static_cluster_nodes = cluster_nodes
 
 # Manual clustering
 unless node['rabbitmq']['clustering']['use_auto_clustering']
+  Chef::Log.debug("Join Cluster -------------------")
   # Join in cluster
   rabbitmq_cluster auto_cluster_nodes do
     cluster_name node['rabbitmq']['clustering']['cluster_name']
