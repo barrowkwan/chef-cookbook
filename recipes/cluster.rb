@@ -28,6 +28,12 @@ cluster_nodes = cluster_nodes.to_json
 auto_cluster_nodes = cluster_nodes
 static_cluster_nodes = cluster_nodes
 
+if node['rabbitmq']['clustering']['use_auto_clustering']
+  Chef::Log.debug("Auto Clustering")
+else
+  Chef::Log.debug("Non-Auto Clustering")
+end
+
 # Manual clustering
 unless node['rabbitmq']['clustering']['use_auto_clustering']
   Chef::Log.debug("Join Cluster -------------------")
